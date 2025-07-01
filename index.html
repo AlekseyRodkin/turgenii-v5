@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТурГений - 300+ развлечений на Алтае от местных жителей</title>
+    <style>
+/* Используем те же базовые стили */
+:root {
+  /* Яркие зеленые цвета для природной темы */
+  --color-background: #FEFEFE;
+  --color-surface: #FFFFFF;
+  --color-text: #1a3a1f;
+  --color-text-secondary: #2C5530;
+  --color-primary: #4CAF50;
+  --color-primary-hover: #45a049;
+  --color-primary-active: #388E3C;
+  --color-secondary: rgba(76, 175, 80, 0.1);
+  --color-secondary-hover: rgba(76, 175, 80, 0.15);
+  --color-secondary-active: rgba(76, 175, 80, 0.2);
+  --color-border: rgba(44, 85, 48, 0.2);
+  --color-btn-primary-text: #FFFFFF;
+  --color-success: #4CAF50;
+  --color-error: #F44336;
+  --color-warning: #FFD700;
+  --color-info: #2196F3;
+  --color-focus-ring: rgba(76, 175, 80, 0.4);
+  
+  /* Typography */
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+  --font-size-4xl: 48px;
+  --font-size-5xl: 64px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.02em;
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-base: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+  --shadow-colored: 0 8px 32px rgba(76, 175, 80, 0.25);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--font-size-5xl); }
+h2 { font-size: var(--font-size-3xl); }
+h3 { font-size: var(--font-size-2xl); }
+h4 { font-size: var(--font-size-xl); }
+
+p {
+  margin-bottom: var(--space-16);
+  color: var(--color-text-secondary);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-20);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-32);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--duration-normal) var(--ease-smooth);
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA000 100%);
+  color: #1a3a1f;
+  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.4);
+  font-weight: var(--font-weight-bold);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, #FFC107 0%, #FF8F00 100%);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+}
+
+.btn--lg {
+  padding: var(--space-20) var(--space-40);
+  font-size: var(--font-size-lg);
+}
+
+/* Hero Section с фото Белухи */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(rgba(44, 85, 48, 0.4), rgba(76, 175, 80, 0.3)), 
+              url('https://images.unsplash.com/photo-1634921338143-899d78e77b86?q=80&w=2000') center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-40) var(--space-20);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin-bottom: var(--space-48);
+}
+
+.hero__title {
+  font-size: clamp(var(--font-size-3xl), 8vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-black);
+  color: white;
+  margin-bottom: var(--space-24);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__subtitle {
+  font-size: var(--font-size-xl);
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: var(--space-40);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+.hero__cta {
+  animation: fadeInUp 1s ease-out 0.4s backwards, pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.hero__stats {
+  display: flex;
+  gap: var(--space-48);
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out 0.6s backwards;
+}
+
+.stat {
+  text-align: center;
+  color: white;
+}
+
+.stat__number {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-black);
+  margin-bottom: var(--space-8);
+  text-shadow: 0 3px 15px rgba(0,0,0,0.5);
+}
+
+.stat__label {
+  font-size: var(--font-size-lg);
+  opacity: 0.95;
+}
+
+/* Sections */
+section {
+  padding: var(--space-64) 0;
+  position: relative;
+}
+
+.section__title {
+  text-align: center;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-black);
+  margin-bottom: var(--space-48);
+  background: linear-gradient(135deg, #2C5530 0%, #4CAF50 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Problem Section с фото туристов */
+.problem {
+  background: linear-gradient(rgba(232, 245, 233, 0.9), rgba(200, 230, 201, 0.9)),
+              url('https://images.unsplash.com/photo-1527004013197-933c4bb611b3?q=80&w=2000') center/cover fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+.problem__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-32);
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.problem__item {
+  text-align: center;
+  padding: var(--space-32);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--duration-normal) var(--ease-bounce);
+  border: 2px solid transparent;
+  backdrop-filter: blur(10px);
+}
+
+.problem__item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: #4CAF50;
+}
+
+.problem__icon {
+  font-size: 64px;
+  margin-bottom: var(--space-16);
+  animation: bounceIn 1s ease-out;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.problem__item p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+  margin: 0;
+}
+
+/* Solution Section с фото Катуни */
+.solution {
+  background: linear-gradient(rgba(46, 125, 50, 0.7), rgba(102, 187, 106, 0.7)),
+              url('https://images.unsplash.com/photo-1601574968106-b312ac309953?q=80&w=2000') center/cover;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution .section__title {
+  -webkit-text-fill-color: white;
+  text-shadow: 0 3px 15px rgba(0,0,0,0.3);
+}
+
+.solution__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-32);
+  position: relative;
+  z-index: 1;
+}
+
+.solution__item {
+  text-align: center;
+  padding: var(--space-40);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.solution__item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.solution__icon {
+  font-size: 64px;
+  margin-bottom: var(--space-16);
+}
+
+.solution__item h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-12);
+  color: white;
+}
+
+.solution__item p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: var(--font-size-md);
+  margin: 0;
+}
+
+/* How it works с фото тропы */
+.how-it-works {
+  background: linear-gradient(rgba(241, 248, 233, 0.95), rgba(220, 237, 200, 0.95)),
+              url('https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2000') center/cover fixed;
+  position: relative;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-32);
+  padding: var(--space-32);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-normal) var(--ease-smooth);
+  backdrop-filter: blur(10px);
+}
+
+.step:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.step__number {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #2C5530 0%, #4CAF50 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-black);
+  flex-shrink: 0;
+  box-shadow: 0 8px 32px rgba(76, 175, 80, 0.3);
+}
+
+.step__content h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.step__content p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+  margin: 0;
+}
+
+/* Activities с фото лугов */
+.activities {
+  background: linear-gradient(rgba(129, 199, 132, 0.8), rgba(255, 215, 0, 0.8)),
+              url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2000') center/cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.activities .section__title {
+  -webkit-text-fill-color: white;
+  text-shadow: 0 3px 15px rgba(0,0,0,0.3);
+}
+
+.activities__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-24);
+  position: relative;
+  z-index: 1;
+}
+
+.activity {
+  text-align: center;
+  padding: var(--space-32);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--duration-normal) var(--ease-bounce);
+  backdrop-filter: blur(10px);
+}
+
+.activity:hover {
+  transform: translateY(-12px) rotate(2deg);
+  box-shadow: var(--shadow-xl);
+}
+
+.activity__icon {
+  font-size: 56px;
+  margin-bottom: var(--space-16);
+}
+
+.activity h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-8);
+  color: var(--color-text);
+}
+
+.activity p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+
+/* Reviews с фото Чуйского тракта */
+.reviews {
+  background: linear-gradient(rgba(241, 248, 233, 0.95), rgba(232, 245, 233, 0.95)),
+              url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=2000') center/cover fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-32);
+  position: relative;
+  z-index: 1;
+}
+
+.review {
+  padding: var(--space-40);
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--duration-normal) var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.review::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 120px;
+  color: rgba(76, 175, 80, 0.15);
+  font-weight: var(--font-weight-black);
+}
+
+.review:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+.review__stars {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-16);
+  color: #FFD700;
+}
+
+.review__text {
+  font-size: var(--font-size-md);
+  font-style: italic;
+  color: var(--color-text);
+  margin-bottom: var(--space-20);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.review__author {
+  font-weight: var(--font-weight-bold);
+  color: #2C5530;
+  font-size: var(--font-size-md);
+  margin: 0;
+}
+
+/* Guarantees с фото звездного неба */
+.guarantees {
+  background: linear-gradient(rgba(56, 142, 60, 0.9), rgba(102, 187, 106, 0.9)),
+              url('https://images.unsplash.com/photo-1519904981063-b0cf448d479e?q=80&w=2000') center/cover;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.guarantees .section__title {
+  -webkit-text-fill-color: white;
+  text-shadow: 0 3px 15px rgba(0,0,0,0.3);
+}
+
+.guarantees__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-32);
+  position: relative;
+  z-index: 1;
+}
+
+.guarantee {
+  text-align: center;
+  padding: var(--space-40);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.guarantee:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.guarantee__icon {
+  font-size: 72px;
+  margin-bottom: var(--space-20);
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+}
+
+.guarantee h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-12);
+  color: white;
+}
+
+.guarantee p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: var(--font-size-md);
+  margin: 0;
+}
+
+/* Final CTA с фото заката */
+.final-cta {
+  background: linear-gradient(rgba(44, 85, 48, 0.8), rgba(129, 199, 132, 0.8)),
+              url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2000') center/cover;
+  color: white;
+  text-align: center;
+  padding: var(--space-64) var(--space-20);
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-black);
+  margin-bottom: var(--space-24);
+  color: white;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.final-cta__subtitle {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-40);
+  color: rgba(255, 255, 255, 0.95);
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.final-cta__button {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA000 100%);
+  color: #1a3a1f;
+  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+  font-weight: var(--font-weight-bold);
+  position: relative;
+  z-index: 1;
+}
+
+.final-cta__button:hover {
+  background: linear-gradient(135deg, #FFC107 0%, #FF8F00 100%);
+  color: #1a3a1f;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 50px rgba(255, 215, 0, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero__stats {
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+  
+  .step {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero__title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .section__title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .problem__grid,
+  .solution__grid,
+  .activities__grid,
+  .reviews__grid,
+  .guarantees__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: var(--space-32) var(--space-16);
+  }
+  
+  .hero__cta,
+  .final-cta__button {
+    width: 100%;
+    padding: var(--space-16) var(--space-24);
+  }
+  
+  section {
+    padding: var(--space-48) 0;
+  }
+}
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__content">
+            <h1 class="hero__title">Алтай ждёт. Выбирай, бронируй, наслаждайся</h1>
+            <p class="hero__subtitle">300+ проверенных развлечений на Алтае. От медитации до рафтинга. Бронируешь напрямую у организаторов. Рекомендуют 9 из 10 путешественников.</p>
+            <a href="https://t.me/turgenii_bot" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg hero__cta">Выбрать развлечение в боте</a>
+        </div>
+        <div class="hero__stats">
+            <div class="stat">
+                <div class="stat__number">300+</div>
+                <div class="stat__label">событий</div>
+            </div>
+            <div class="stat">
+                <div class="stat__number">50+</div>
+                <div class="stat__label">местных гидов</div>
+            </div>
+            <div class="stat">
+                <div class="stat__number">9/10</div>
+                <div class="stat__label">рекомендуют</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2 class="section__title">Знакомая история?</h2>
+            <div class="problem__grid">
+                <div class="problem__item">
+                    <div class="problem__icon">😕</div>
+                    <p>Хочешь крутой отдых, но не знаешь, что выбрать</p>
+                </div>
+                <div class="problem__item">
+                    <div class="problem__icon">💸</div>
+                    <p>Боишься попасть к посредникам и переплатить</p>
+                </div>
+                <div class="problem__item">
+                    <div class="problem__icon">⏰</div>
+                    <p>Тратишь часы на поиск в разных источниках</p>
+                </div>
+                <div class="problem__item">
+                    <div class="problem__icon">😰</div>
+                    <p>Не уверен в качестве и надежности организатора</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <h2 class="section__title">Мы это исправили</h2>
+            <div class="solution__grid">
+                <div class="solution__item">
+                    <div class="solution__icon">🎯</div>
+                    <h3>300+ событий в одном месте</h3>
+                    <p>Удобные фильтры по интересам, карте и настроению</p>
+                </div>
+                <div class="solution__item">
+                    <div class="solution__icon">🤝</div>
+                    <h3>Только местные жители</h3>
+                    <p>Коренные алтайцы покажут секретные места</p>
+                </div>
+                <div class="solution__item">
+                    <div class="solution__icon">⭐</div>
+                    <h3>Рекомендуют 9 из 10</h3>
+                    <p>Реальные отзывы от 1000+ путешественников</p>
+                </div>
+                <div class="solution__item">
+                    <div class="solution__icon">💬</div>
+                    <h3>Прямая связь 24/7</h3>
+                    <p>Общайся с организатором напрямую в Telegram</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section__title">Три шага до приключения</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step__number">1</div>
+                    <div class="step__content">
+                        <h3>Переходишь в наш бот</h3>
+                        <p>Просто нажми на кнопку и попадёшь в мир развлечений</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step__number">2</div>
+                    <div class="step__content">
+                        <h3>Выбираешь по душе</h3>
+                        <p>По карте, интересам или настроению - как удобно</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step__number">3</div>
+                    <div class="step__content">
+                        <h3>Бронируешь напрямую</h3>
+                        <p>Без переплат, сразу у организатора</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities -->
+    <section class="activities">
+        <div class="container">
+            <h2 class="section__title">Что тебя ждёт на Алтае</h2>
+            <div class="activities__grid">
+                <div class="activity">
+                    <div class="activity__icon">🚣</div>
+                    <h3>Рафтинг</h3>
+                    <p>Адреналин и невероятные виды</p>
+                </div>
+                <div class="activity">
+                    <div class="activity__icon">🧘</div>
+                    <h3>Медитация</h3>
+                    <p>Покой и единение с природой</p>
+                </div>
+                <div class="activity">
+                    <div class="activity__icon">🐎</div>
+                    <h3>Конные прогулки</h3>
+                    <p>Романтика и приключения</p>
+                </div>
+                <div class="activity">
+                    <div class="activity__icon">🍽️</div>
+                    <h3>Гастротуры</h3>
+                    <p>Вкусы и традиции Алтая</p>
+                </div>
+                <div class="activity">
+                    <div class="activity__icon">🏔️</div>
+                    <h3>Экскурсии</h3>
+                    <p>История и легенды края</p>
+                </div>
+                <div class="activity">
+                    <div class="activity__icon">🎿</div>
+                    <h3>Активный отдых</h3>
+                    <p>Для любителей движения</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section__title">Они уже попробовали</h2>
+            <div class="reviews__grid">
+                <div class="review">
+                    <div class="review__stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review__text">"Забронировал рафтинг за 5 минут! Общался напрямую с инструктором. Всё прошло идеально, рекомендую!"</p>
+                    <div class="review__author">— Алексей, Москва</div>
+                </div>
+                <div class="review">
+                    <div class="review__stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review__text">"Наконец-то нашла сервис с реальными отзывами! Выбрала конную прогулку по рейтингу - не пожалела!"</p>
+                    <div class="review__author">— Мария, Новосибирск</div>
+                </div>
+                <div class="review">
+                    <div class="review__stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review__text">"Гид оказался коренным алтайцем с 10-летним опытом. Показал такие места! Спасибо ТурГений!"</p>
+                    <div class="review__author">— Елена, Барнаул</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantees -->
+    <section class="guarantees">
+        <div class="container">
+            <h2 class="section__title">Твоя безопасность</h2>
+            <div class="guarantees__grid">
+                <div class="guarantee">
+                    <div class="guarantee__icon">🛡️</div>
+                    <h3>Проверенные гиды</h3>
+                    <p>Только лицензированные организаторы</p>
+                </div>
+                <div class="guarantee">
+                    <div class="guarantee__icon">⭐</div>
+                    <h3>9 из 10 рекомендуют</h3>
+                    <p>1000+ реальных отзывов</p>
+                </div>
+                <div class="guarantee">
+                    <div class="guarantee__icon">💬</div>
+                    <h3>Поддержка 24/7</h3>
+                    <p>Всегда поможем в боте</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2 class="final-cta__title">Готов к приключениям? Жми!</h2>
+            <p class="final-cta__subtitle">Алтай ждёт тебя. Выбирай развлечение прямо сейчас</p>
+            <a href="https://t.me/turgenii_bot" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg final-cta__button">Выбрать развлечение в боте</a>
+        </div>
+    </section>
+
+    <script>
+        console.log('ТурГений лендинг загружен');
+        
+        // Анимация при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Добавляем анимацию всем элементам
+        document.querySelectorAll('.problem__item, .solution__item, .step, .activity, .review, .guarantee').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
